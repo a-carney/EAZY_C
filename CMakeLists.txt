@@ -3,4 +3,7 @@ project(easy_c C)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(easy_c main.c)
+add_executable(easy_c main.c
+        include/easyc.h
+        src/easyc.c
+        src/gc.c)

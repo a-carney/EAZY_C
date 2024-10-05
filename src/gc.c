@@ -44,9 +44,12 @@ void* gc_alloc(size_t size) {
 }
 
 void gc_collect() {
-    for (size_t i = 0; i < gc_count; gc_count--) {\
-        free(gc_entries[i].ptr);
-        gc_entries[i] = gc_entries[gc_count - 1];
-        gc_count--;
+    for (size_t i = 0; i < gc_count; i++)
+    {
+        if (gc_entries[i].ptr != NULL) {
+            free(gc_entries[i].ptr);
+            gc_entries[i].ptr = NULL;
+        }
+        gc_count = 0;
     }
 }
